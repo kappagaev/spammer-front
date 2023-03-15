@@ -17,6 +17,10 @@ export const apiCreateTarget = (target: Target) => {
   return api.post("/target", target)
 }
 
+export const apiDeleteTarget = (id: number) => {
+  return api.delete(`/target/${id}`)
+}
+
 export interface CreateSpamDto {
   title: string
   content: string
