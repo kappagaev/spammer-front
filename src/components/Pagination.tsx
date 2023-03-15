@@ -30,7 +30,14 @@ export const Pagination = ({ page, limit, total, onChange }: Props) => {
         ))}
 
         <li className="page-item">
-          <button className="page-link" onClick={() => onChange(page + 1)}>
+          <button
+            className="page-link"
+            onClick={() => {
+              if (page < Math.ceil(total / limit)) {
+                onChange(page + 1)
+              }
+            }}
+          >
             Next
           </button>
         </li>
