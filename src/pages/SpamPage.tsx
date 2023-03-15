@@ -29,6 +29,14 @@ export const SpamPage = () => {
 
   const navigate = useNavigate()
   const onSubmit = async (dto: CreateSpamDto) => {
+    if (selectedTargets.length === 0) {
+      showNotification({
+        title: "Error",
+        message: "Select at least one target",
+        status: "error",
+      })
+      return
+    }
     const responce = await apiCreateSpam({
       title: dto.title,
       content: dto.content,
