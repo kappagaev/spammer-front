@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { apiCreateTarget } from "../../axios/api"
+import { useNotification } from "../../context/NotificationContextProvider"
 import { Target } from "../../types/target"
 
 interface TargetFormProps {
@@ -16,11 +17,19 @@ export const TargetForm = ({ target }: TargetFormProps) => {
     formState: { errors },
   } = useForm<Target>()
 
+  const { showNotification } = useNotification()
+
   const navigate = useNavigate()
   const onSubmit = async (target: Target) => {
     const responce = await apiCreateTarget(target)
     if (responce.status === 201) {
       console.log("success")
+
+      showNotification({
+        title: "Success!",
+        message: "Target created successfully!",
+        status: "success",
+      })
       navigate("/targets/")
     }
   }
