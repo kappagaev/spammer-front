@@ -19,8 +19,10 @@ export const TargetList = () => {
 
   return (
     <>
+      <label htmlFor="limit">Limit</label>
       <select
         className="form-select"
+        id="limit"
         onChange={(e) => setLimit(Number(e.target.value))}
       >
         <option value="10">10</option>
@@ -29,7 +31,9 @@ export const TargetList = () => {
         <option value="100">100</option>
       </select>
       <TargetTable targets={data?.data} />
-      {data !== null ? <Pagination {...data} onChange={changePage} /> : null}
+      {data !== null && data?.total > limit ? (
+        <Pagination {...data} onChange={changePage} />
+      ) : null}
     </>
   )
 }
