@@ -32,7 +32,7 @@ export const TargetEdit = () => {
         message: "Target updated successfully!",
         status: "success",
       })
-      navigate("/targets/")
+      navigate(`/targets/${id}`)
     }
   }
   useEffect(() => {
