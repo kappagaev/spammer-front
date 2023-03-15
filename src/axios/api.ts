@@ -13,6 +13,16 @@ const api = axios.create({
 
 export default api
 
+export interface UpateTargetDto {
+  name: string
+  email: string
+  surname: string
+  patronymic: string
+}
+export const apiUpdateTarget = (id: number, target: UpateTargetDto) => {
+  return api.put(`/target/${id}`, target)
+}
+
 export const apiCreateTarget = (target: Target) => {
   return api.post("/target", target)
 }

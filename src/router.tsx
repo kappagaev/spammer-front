@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"
 import App from "./App"
-import { TargetList, TargetCreate, TargetShow } from "./pages"
+import { TargetList, TargetCreate, TargetShow, TargetEdit } from "./pages"
 import { SpamPage } from "./pages/SpamPage"
 
 export const router = createBrowserRouter([
@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: "/targets/:id",
         element: <TargetShow />,
+      },
+      {
+        path: "/targets/:id/edit",
+        element: <TargetEdit />,
       },
       {
         path: "/targets/create",

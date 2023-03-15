@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { apiDeleteTarget } from "../../axios/api"
 import { useNotification } from "../../context/NotificationContextProvider"
 import { useFetch } from "../../hooks/useFetch"
@@ -38,9 +38,9 @@ export const TargetShow = () => {
       {data?.name}
       {data?.surname}
       {data?.patronymic}
-      <a href="/targets/{{target.id}}/edit" className="btn btn-success">
+      <Link className="btn btn-success" to={`/targets/${id}/edit`}>
         Edit
-      </a>
+      </Link>
       <button type="submit" className="btn btn-danger" onClick={onDelete}>
         Delete
       </button>

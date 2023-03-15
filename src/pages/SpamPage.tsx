@@ -64,6 +64,7 @@ export const SpamPage = () => {
       <select
         className="form-select"
         aria-label="Default select example"
+        defaultValue={0}
         onChange={(e) => {
           const spam = data?.data.find(
             (spam) => spam.id === parseInt(e.target.value)
@@ -146,8 +147,9 @@ export const SpamPage = () => {
               setSelectedTargets([...selectedTargets, targetId])
             }
           }}
+          defaultValue=""
         >
-          <option selected>Add target</option>
+          <option>Add target</option>
           {targets?.data
             .filter(({ id }) => !selectedTargets.includes(id))
             .map((target) => (

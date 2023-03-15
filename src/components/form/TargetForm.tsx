@@ -38,6 +38,7 @@ export const TargetForm = ({ target }: TargetFormProps) => {
   }, [errors])
   return (
     <form method="post" onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="h2">New Target</h2>
       <div className="form-group p-10">
         <label htmlFor="targetEmail">Email address</label>
         <input
@@ -55,7 +56,9 @@ export const TargetForm = ({ target }: TargetFormProps) => {
       <br />
       <div className="row">
         <div className="col">
+          <label htmlFor="name">Name</label>
           <input
+            id="name"
             {...register("name", {
               required: true,
             })}
@@ -66,7 +69,9 @@ export const TargetForm = ({ target }: TargetFormProps) => {
           />
         </div>
         <div className="col">
+          <label htmlFor="surname">Surname</label>
           <input
+            id="surname"
             {...register("surname", {
               required: true,
             })}
@@ -77,7 +82,9 @@ export const TargetForm = ({ target }: TargetFormProps) => {
           />
         </div>
         <div className="col">
+          <label htmlFor="patronymic">Patronymic</label>
           <input
+            id="patronymic"
             {...register("patronymic", {
               required: true,
             })}
