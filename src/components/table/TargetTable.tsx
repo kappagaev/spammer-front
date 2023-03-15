@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Target } from "../../types/target"
 
@@ -5,6 +6,7 @@ interface Props {
   targets: Target[] | undefined
 }
 export const TargetTable = ({ targets }: Props) => {
+  const [checked, setChecked] = useState<number[]>([])
   return (
     <table className="table table-sm">
       <thead>
@@ -29,15 +31,27 @@ export const TargetTable = ({ targets }: Props) => {
             <td>{target.patronymic}</td>
             <td>{target.email}</td>
             <td>
-              <input type="checkbox" name="target_id[]" value="{{this.id}}" />
+              <input
+                type="checkbox"
+                onChange={() => {
+                  if (checked.includes(target.id)) {
+                    setChecked(checked.filter((id) => id !== target.id))
+                  } else {
+                    setChecked([...checked, target.id])
+                  }
+                }}
+              />
             </td>
           </tr>
         ))}
         <tr>
           <td>
-            <button type="submit" className="btn btn-info">
+            <Link
+              className="btn btn-primary"
+              to={"/spam?targets=" + JSON.stringify(checked)}
+            >
               Spam
-            </button>
+            </Link>
           </td>
         </tr>
       </tbody>
