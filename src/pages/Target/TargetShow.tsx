@@ -35,9 +35,13 @@ export const TargetShow = () => {
   return (
     <div>
       <h1>Target</h1>
-      {data?.name}
-      {data?.surname}
-      {data?.patronymic}
+      <div className="form-group p-10">id: {data?.id}</div>
+      <div className="form-group p-10">id: {data?.email}</div>
+      <div className="form-group p-10">name: {data?.name}</div>
+      <div className="form-group p-10">surname: {data?.surname}</div>
+      <div className="form-group p-10">patronymic: {data?.patronymic}</div>
+
+      <br />
       <Link className="btn btn-success" to={`/targets/${id}/edit`}>
         Edit
       </Link>
